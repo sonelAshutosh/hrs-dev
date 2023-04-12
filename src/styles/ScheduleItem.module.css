@@ -1,0 +1,13 @@
+.schedule-item {
+  /* position: relative; */
+  background-color: var(--base-300);
+  height: 15vh;
+  aspect-ratio: 8/1;
+  border-radius: 25px;
+  padding: 2rem;
+  box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
+  z-index: 101;
+  /* top: 7rem;
+    left: 2.5rem; */
+  margin: 1rem;
+}

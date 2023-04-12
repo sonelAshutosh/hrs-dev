@@ -1,0 +1,82 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  /* place-content: center; */
+  place-items: center;
+  height: 100%;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.table {
+  margin: 1rem;
+  border-radius: 25px;
+  /* padding: 0.25rem; */
+  background-color: var(--base-300);
+  overflow-y: auto;
+}
+.table::-webkit-scrollbar {
+  display: none;
+}
+
+.table-row:nth-child(1) {
+  position: sticky;
+  top: 0;
+  z-index: 25;
+}
+
+.table-row {
+  display: flex;
+  /* width: 100%; */
+}
+
+.table-heading {
+  /* margin-top: 0.25rem; */
+  padding: 1rem 4rem;
+  background-color: var(--accent-600);
+}
+
+.table-column {
+  width: 50%;
+  margin-top: 0.25rem;
+  padding: 1rem 4rem;
+  /* background-color: var(--accent-600);
+      position: sticky;
+      top: 0; */
+}
+
+.table-heading-1 {
+  border-radius: 25px 0 0 25px;
+}
+.table-heading-2 {
+  border-radius: 0;
+}
+.table-heading-3 {
+  border-radius: 0 25px 25px 0;
+}
+
+.add-button {
+  position: absolute;
+  width: 7.5rem;
+  right: 0;
+  bottom: 0;
+}
+
+.button {
+  border-radius: 15px;
+  margin-left: 1.75rem;
+  margin-bottom: 25px;
+  height: 3.5rem;
+  width: 45%;
+  font-size: 1.25rem;
+  display: flex;
+  place-items: center;
+  place-content: center;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
+    rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+}
+
+.button:hover {
+  background-color: var(--accent-600);
+}

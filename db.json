@@ -1,0 +1,107 @@
+{
+  "_slot": [
+    {
+      "Slot_Id": "",
+      "Work_Id": "",
+      "Venue_Id": "",
+      "Human_Id": "",
+      "Row_Id": "",
+      "Col_Id": ""
+    }
+  ],
+  "_overlapping_slot": [
+    {
+      "Overlapping_Slot_Id": "",
+      "Work_Id": "",
+      "Venue_Id": "",
+      "Human_Id": "",
+      "Slot_Id": ""
+    }
+  ],
+  "_human_resource": [
+    {
+      "Human_Id": "",
+      "First_Name": "",
+      "Last_Name": "",
+      "Shorthand": "",
+      "Organisation_Id": "",
+      "Team_Id": ""
+    }
+  ],
+  "_task": [
+    {
+      "Work_Id": "",
+      "Work_Code": "",
+      "Work_Name": "",
+      "Work_Type": "",
+      "Team_Id": ""
+    }
+  ],
+  "_venue": [
+    {
+      "Venue_Id": "",
+      "Venue_Name": "",
+      "Venue_Code": "",
+      "Team_Id": ""
+    }
+  ],
+  "_column": [
+    {
+      "Column_Id": "",
+      "Column_Field_Name": "",
+      "Column_Timing_Start": "",
+      "Column_Timing_End": "",
+      "Profile_Id": ""
+    }
+  ],
+  "_row": [
+    {
+      "Row_Id": "",
+      "Row_Type": "",
+      "Row_Day": "",
+      "Row_Date": "",
+      "Schedule_Id": ""
+    }
+  ],
+  "_schedule_defination": [
+    {
+      "Sehdedule_Id": "",
+      "Profile_Id": "",
+      "Number_Of_Rows": "",
+      "Schedule_Title": "",
+      "Schedule_Title_Code": "",
+      "Session": "",
+      "Team_Id": ""
+    }
+  ],
+  "_organsiation": [
+    {
+      "Organisation_Id": "",
+      "Organisation_Name": "",
+      "Organisation_Code": ""
+    }
+  ],
+  "_column_profile": [
+    {
+      "Profile_Id": "",
+      "Profile_Name": "",
+      "Number_Of_Columns": "",
+      "Organisation_Id": ""
+    }
+  ],
+  "_team": [
+    {
+      "Team_Id": "",
+      "Team_Name": "",
+      "Team_Code": "",
+      "Organisation_Id": ""
+    }
+  ],
+  "_login": [
+    {
+      "User_Id": "",
+      "User_Password": "",
+      "Team_Id": ""
+    }
+  ]
+}

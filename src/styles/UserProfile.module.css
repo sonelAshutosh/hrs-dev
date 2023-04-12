@@ -1,0 +1,53 @@
+.user-profile {
+  position: absolute;
+  background-color: var(--base-600);
+  width: 50vh;
+  border-radius: 25px;
+  aspect-ratio: 1;
+  box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
+  display: flex;
+  flex-direction: column;
+  place-content: center;
+  padding: 0 2rem;
+  right: 0.75rem;
+  top: 4.25rem;
+  z-index: 94;
+  scale: 1;
+  transition: scale 200ms ease-in-out;
+  transform-origin: top right;
+}
+
+.user-profile-logout {
+  position: relative;
+  bottom: 0;
+  display: flex;
+  place-items: center;
+  place-content: center;
+}
+
+.user-profile-logout > * {
+  margin-left: 0;
+  margin-bottom: 0;
+}
+
+.user-profile-close {
+  scale: 0;
+}
+
+.button {
+  border-radius: 15px;
+  margin-left: 1.75rem;
+  margin-bottom: 25px;
+  height: 3.5rem;
+  width: 45%;
+  font-size: 1.25rem;
+  display: flex;
+  place-items: center;
+  place-content: center;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
+    rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+}
+
+.button:hover {
+  background-color: var(--accent-300);
+}
