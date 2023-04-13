@@ -1,17 +1,25 @@
-import React from 'react'
-import styles from '../styles/LeftNavbar.module.css'
+import React, { useState } from 'react'
 import Link from 'next/link'
+import { useRouter } from 'next/router'
+import styles from '../styles/LeftNavbar.module.css'
 
 function LeftNavbar(props) {
+  const { pathname } = useRouter() // Get the pathname from useRouter hook
+
+  // Define your left navbar list items
   var LeftNavbarListItems = [
-    { id: 1, link: 'My Schedules' },
-    { id: 2, link: 'Tasks' },
-    { id: 3, link: 'Venues' },
-    { id: 4, link: 'Human R.' },
-    { id: 5, link: 'Analytics' },
-    { id: 6, link: 'Export' },
+    { id: 1, link: 'My Schedules', path: '/' }, // Add path property for each item
+    { id: 2, link: 'Tasks', path: '/tasks' },
+    { id: 3, link: 'Venues', path: '/venues' },
+    { id: 4, link: 'Human R.', path: '/human-resource' },
+    { id: 5, link: 'Analytics', path: '/analytics' },
+    { id: 6, link: 'Export', path: '/report' },
   ]
-  var navLeftList = []
+  const [activeIndex, setActiveIndex] = useState(null)
+
+  const handleLinkState = (index) => {
+    setActiveIndex(index)
+  }
 
   return (
     <div
@@ -24,35 +32,20 @@ function LeftNavbar(props) {
       <div className={styles['button']}>+ New</div>
       <div className={styles['left-navbar-list']}>
         <ul className={styles['ul']}>
-          <Link href="/">
-            <li>My Schedules</li>
-          </Link>
-          <Link href="/tasks">
-            <li>Tasks</li>
-          </Link>
-          <Link href="/venues">
-            <li>Venues</li>
-          </Link>
-          <Link href="/human-resource">
-            <li>Human Resource</li>
-          </Link>
-          <Link href="/analytics">
-            <li>Analytics</li>
-          </Link>
-          <Link href="/report">
-            <li>Report</li>
-          </Link>
+          {LeftNavbarListItems.map((item) => (
+            <Link href={item.path} key={item.id}>
+              <li
+                data-link-status={
+                  pathname === item.path ? 'active' : 'inactive'
+                }
+                onClick={() => handleLinkState(item.id)}
+              >
+                {item.link}
+              </li>
+            </Link>
+          ))}
         </ul>
       </div>
-
-      {/* <div className={styles['left-navbar-list']}>
-        <ul className={styles['ul']}>
-          {LeftNavbarListItems.forEach((item) => {
-            navLeftList.push(<li key={item.id}>{item.link}</li>)
-          })}
-          {navLeftList}
-        </ul>
-      </div> */}
     </div>
   )
 }

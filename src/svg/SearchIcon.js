@@ -1,6 +1,6 @@
 import React from 'react'
 
-function ProfileIcon() {
+function SearchIcon() {
   return (
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
       <path
@@ -11,4 +11,4 @@ function ProfileIcon() {
   )
 }
 
-export default ProfileIcon
+export default SearchIcon

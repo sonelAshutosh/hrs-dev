@@ -29,6 +29,7 @@
 .table-row {
   display: flex;
   /* width: 100%; */
+  /* position: relative; */
 }
 
 .table-heading {
@@ -38,12 +39,16 @@
 }
 
 .table-column {
-  width: 50%;
+  flex-grow: 1;
   margin-top: 0.25rem;
   padding: 1rem 4rem;
   /* background-color: var(--accent-600);
       position: sticky;
       top: 0; */
+}
+
+.table-column-input {
+  padding: 1rem 1.5rem;
 }
 
 .table-heading-1 {
@@ -53,6 +58,9 @@
   border-radius: 0;
 }
 .table-heading-3 {
+  border-radius: 0 0 0 0;
+}
+.table-heading-4 {
   border-radius: 0 25px 25px 0;
 }
 
@@ -63,13 +71,19 @@
   bottom: 0;
 }
 
+.delete-button {
+  display: flex;
+  margin: auto;
+  width: 7.5rem;
+}
+
 .button {
+  background-color: var(--base-300);
   border-radius: 15px;
-  margin-left: 1.75rem;
-  margin-bottom: 25px;
   height: 3.5rem;
   width: 45%;
   font-size: 1.25rem;
+  margin: 0.25rem;
   display: flex;
   place-items: center;
   place-content: center;

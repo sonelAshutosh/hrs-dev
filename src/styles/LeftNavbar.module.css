@@ -36,9 +36,13 @@
   background-color: var(--base-600);
 }
 
-.left-navbar-list > ul > * > li:active {
+.left-navbar-list > ul > * > li[data-link-status='active'] {
   background-color: var(--accent-300);
 }
+
+/* .left-navbar-list > ul > * > li:active {
+  background-color: var(--accent-300);
+} */
 
 .left-navbar-open {
   left: 0.75rem;
