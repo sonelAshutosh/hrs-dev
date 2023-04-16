@@ -1,0 +1,62 @@
+.login-container {
+  display: flex;
+  flex-direction: column;
+  place-items: center;
+  place-content: center;
+  height: 100vh;
+  width: 100vw;
+  background-color: var(--accent-300);
+}
+
+.login {
+  color: var(--accent-900);
+  background-color: var(--base-300);
+  display: flex;
+  flex-direction: column;
+  place-items: center;
+  width: 60vh;
+  aspect-ratio: 1;
+  border-radius: 25px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
+    rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+}
+
+.login > h1 {
+  margin: 3rem;
+}
+
+.login > input {
+  font-weight: bolder;
+  background-color: var(--base-600);
+  color: var(--accent-900);
+  width: 50%;
+  margin: 0.5rem;
+  padding: 1rem;
+  border: 0;
+  border-radius: 25px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
+    rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+}
+
+.login > input:focus {
+  outline: none;
+}
+
+.button {
+  background-color: var(--accent-300);
+  border-radius: 15px;
+  height: 3.5rem;
+  width: 45%;
+  font-size: 1.25rem;
+  margin: 2rem;
+  display: flex;
+  place-items: center;
+  place-content: center;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
+    rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+}
+
+.button:hover {
+  background-color: var(--accent-900);
+  color: var(--base-300);
+}

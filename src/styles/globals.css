@@ -101,7 +101,7 @@ a:visited {
   border-radius: 25px;
   display: flex;
   flex-direction: column;
-  place-content: center;
+  /* place-content: center; */
   place-items: center;
   overflow-y: auto;
 }

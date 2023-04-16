@@ -17,7 +17,9 @@ export default function App({ Component, pageProps }) {
   const handleUserProfile = () => {
     setUserProfile(!userProfile)
   }
-
+  if (Component.getLayout) {
+    return Component.getLayout(<Component {...pageProps} />)
+  }
   return (
     <>
       <div className="App">

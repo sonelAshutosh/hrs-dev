@@ -29,7 +29,9 @@ function LeftNavbar(props) {
           : styles['left-navbar']
       }
     >
-      <div className={styles['button']}>+ New</div>
+      <Link href="/create-schedule">
+        <div className={styles['button']}>+ New</div>
+      </Link>
       <div className={styles['left-navbar-list']}>
         <ul className={styles['ul']}>
           {LeftNavbarListItems.map((item) => (

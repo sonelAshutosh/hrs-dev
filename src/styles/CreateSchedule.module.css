@@ -1,0 +1,40 @@
+.create-schedule-container {
+  height: 80%;
+  aspect-ratio: 4/3;
+  display: flex;
+  flex-direction: column;
+  place-content: center;
+  background-color: var(--base-300);
+  margin: auto;
+  padding: 2rem;
+  border-radius: 25px;
+  box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
+}
+
+.create-schedule-container > * {
+  margin: 1rem;
+}
+.create-schedule-container > :nth-child(1) {
+  margin: auto;
+}
+.create-schedule-container > :last-child {
+  margin: auto;
+  margin-right: 1rem;
+}
+.button {
+  background-color: var(--base-300);
+  border-radius: 15px;
+  height: 3.5rem;
+  width: 45%;
+  font-size: 1.25rem;
+  margin: 0.25rem;
+  display: flex;
+  place-items: center;
+  place-content: center;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
+    rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+}
+
+.button:hover {
+  background-color: var(--accent-600);
+}
