@@ -8,7 +8,7 @@ function LeftNavbar(props) {
 
   // Define your left navbar list items
   var LeftNavbarListItems = [
-    { id: 1, link: 'My Schedules', path: '/' }, // Add path property for each item
+    { id: 1, link: 'My Schedules', path: '/my-schedules' }, // Add path property for each item
     { id: 2, link: 'Tasks', path: '/tasks' },
     { id: 3, link: 'Venues', path: '/venues' },
     { id: 4, link: 'Human R.', path: '/human-resource' },

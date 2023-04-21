@@ -1,28 +1,30 @@
 .login-container {
   display: flex;
-  flex-direction: column;
-  place-items: center;
-  place-content: center;
+  background-image: url(../../public/loginBackground.jpg);
+  background-size: cover;
+
+  /* flex-direction: column; */
+  /* place-items: center; */
+  /* place-content: center; */
   height: 100vh;
   width: 100vw;
-  background-color: var(--accent-300);
 }
 
 .login {
   color: var(--accent-900);
-  background-color: var(--base-300);
+  background-color: var(--black);
+  /* opacity: 0.5; */
   display: flex;
   flex-direction: column;
   place-items: center;
+  place-content: center;
   width: 60vh;
-  aspect-ratio: 1;
-  border-radius: 25px;
   box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
     rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
 }
 
 .login > h1 {
-  margin: 3rem;
+  margin: 1rem;
 }
 
 .login > input {

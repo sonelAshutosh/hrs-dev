@@ -1,0 +1,21 @@
+/* Set up the grid container */
+.container {
+  display: grid;
+  grid-gap: 0.5rem; /* Add 10px gap between grid items */
+}
+
+/* Define styles for grid rows */
+.row {
+  display: flex; /* Use flexbox to align grid items horizontally */
+  justify-content: center; /* Center grid items horizontally */
+  align-items: center; /* Center grid items vertically */
+  gap: 0.5rem;
+}
+
+/* Define styles for grid columns */
+.col {
+  display: flex; /* Use flexbox to align grid items vertically */
+  justify-content: center; /* Center grid items horizontally */
+  align-items: center; /* Center grid items vertically */
+  gap: 0.25rem;
+}

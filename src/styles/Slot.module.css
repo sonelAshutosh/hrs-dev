@@ -1,0 +1,17 @@
+.slot-container {
+  /* height: 20rem; */
+  display: flex;
+  place-content: center;
+  place-items: center;
+  flex-direction: column;
+  width: 10rem;
+  aspect-ratio: 2/1;
+  background-color: var(--base-300);
+  border-radius: 5px;
+  padding: 0.5rem;
+  box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
+}
+
+.slot-container > * > select {
+  width: 8rem;
+}

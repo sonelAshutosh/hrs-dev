@@ -1,20 +1,12 @@
-import ScheduleItem from '@/components/ScheduleItem'
-import styles from '../styles/Index.module.css'
+import { useRouter } from 'next/router'
+import { useEffect } from 'react'
 
-export default function index() {
-  return (
-    <div className={styles['my-schedules']}>
-      <ScheduleItem />
-      <ScheduleItem />
-      <ScheduleItem />
-      <ScheduleItem />
-      <ScheduleItem />
-      <ScheduleItem />
-      <ScheduleItem />
-      <ScheduleItem />
-      <ScheduleItem />
-      <ScheduleItem />
-      <ScheduleItem />
-    </div>
-  )
+export default function RedirectHome() {
+  const router = useRouter()
+
+  useEffect(() => {
+    router.replace('/my-schedules')
+  }, [])
+
+  return null
 }

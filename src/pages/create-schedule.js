@@ -15,18 +15,24 @@ function CreateSchedule() {
       </div>
       <div className={styles['schedule-session']}>
         <label htmlFor="">Session : </label>
-        <select name="" id="">
-          <option value="">A</option>
-          <option value="">B</option>
-          <option value="">C</option>
+        <select defaultValue={new Date().getFullYear()}>
+          {Array(200)
+            .fill(0)
+            .map((_, index) => {
+              const year = 1900 + index
+              return (
+                <option key={year} value={year}>
+                  {year} - {year + 1}
+                </option>
+              )
+            })}
         </select>
       </div>
       <div className={styles['schedule-format']}>
         <label htmlFor="">Format : </label>
         <select name="" id="">
-          <option value="">A</option>
-          <option value="">B</option>
-          <option value="">C</option>
+          <option value="">Day</option>
+          <option value="">Date</option>
         </select>
       </div>
       <div className={styles['schedule-Profile']}>
