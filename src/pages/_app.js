@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import '@/styles/globals.css'
 import { useState } from 'react'
+import Image from 'next/image'
 import SearchIcon from '@/svg/SearchIcon'
 import MenuOpenIcon from '@/svg/MenuOpenIcon'
 import MenuCloseIcon from '@/svg/MenuCloseIcon'
@@ -31,7 +32,13 @@ export default function App({ Component, pageProps }) {
               </div>
               <div className="logo">
                 <Link href="/">
-                  <img src="./logo.jpg" alt="logo" srcSet="" />
+                  <Image
+                    src="/logo.jpg"
+                    width="50"
+                    height="50"
+                    alt="logo"
+                    srcSet=""
+                  />
                 </Link>
               </div>
               <div className="search">
@@ -43,7 +50,13 @@ export default function App({ Component, pageProps }) {
                 </div>
               </div>
               <div className="profile" onClick={handleUserProfile}>
-                <img src="/profile.jpg" alt="profile" />
+                <Image
+                  src="/profile.jpg"
+                  width="50"
+                  height="50"
+                  alt="profile"
+                  srcSet=""
+                />
               </div>
             </div>
           </div>
