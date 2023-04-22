@@ -9,11 +9,15 @@
   overflow: hidden;
 }
 
+.container svg {
+  color: var(--black);
+}
+
 .table {
   margin: 1rem;
   border-radius: 25px;
   /* padding: 0.25rem; */
-  background-color: var(--base-300);
+  background-color: var(--base-600);
   overflow-y: auto;
 }
 .table::-webkit-scrollbar {
@@ -35,7 +39,8 @@
 .table-heading {
   /* margin-top: 0.25rem; */
   padding: 1rem 4rem;
-  background-color: var(--accent-600);
+  background-color: var(--accent-300);
+  /* color: var(--accent-300); */
 }
 
 .table-column {
@@ -78,7 +83,7 @@
 }
 
 .button {
-  background-color: var(--base-300);
+  background-color: var(--accent-300);
   border-radius: 15px;
   height: 3.5rem;
   width: 45%;
@@ -93,4 +98,8 @@
 
 .button:hover {
   background-color: var(--accent-600);
+}
+
+.button:hover svg {
+  color: var(--base-300);
 }

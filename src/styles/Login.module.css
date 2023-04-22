@@ -11,7 +11,7 @@
 }
 
 .login {
-  color: var(--accent-900);
+  color: var(--accent-300);
   background-color: var(--black);
   /* opacity: 0.5; */
   display: flex;
@@ -29,8 +29,8 @@
 
 .login > input {
   font-weight: bolder;
-  background-color: var(--base-600);
-  color: var(--accent-900);
+  background-color: var(--base-900);
+  color: var(--base-300);
   width: 50%;
   margin: 0.5rem;
   padding: 1rem;
@@ -45,7 +45,8 @@
 }
 
 .button {
-  background-color: var(--accent-300);
+  background-color: var(--accent-600);
+  color: var(--base-300);
   border-radius: 15px;
   height: 3.5rem;
   width: 45%;
@@ -59,6 +60,6 @@
 }
 
 .button:hover {
-  background-color: var(--accent-900);
+  background-color: var(--accent-300);
   color: var(--base-300);
 }

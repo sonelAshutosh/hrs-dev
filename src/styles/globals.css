@@ -2,15 +2,15 @@
 
 :root {
   /* Custom CSS Variables for THEME */
-  --base-300: #f8fafc;
+  --base-300: #f6f1f1;
   --base-600: #cbd5e1;
   --base-900: #475569;
 
-  --accent-300: #d8b4fe;
-  --accent-600: #8b5cf6;
-  --accent-900: #6d28d9;
+  --accent-300: #19a7ce;
+  --accent-600: #146c94;
+  /* --accent-900: #6d28d9; */
 
-  --black: black;
+  --black: #000000;
 }
 
 * {
@@ -25,6 +25,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow: hidden;
+  scroll-behavior: smooth;
 }
 
 code {
@@ -34,24 +35,26 @@ code {
 
 a {
   text-decoration: none;
-  color: black;
+  color: var(--black);
 }
 a:visited {
-  color: black;
+  color: var(--black);
 }
 img {
   display: block;
   border-radius: 100px;
 }
-
+svg {
+  color: var(--base-300);
+}
 .container {
-  background-color: var(--base-300);
+  background-color: var(--black);
   height: 100vh;
   width: 100vw;
 }
 
 .header {
-  background-color: var(--base-300);
+  background-color: var(--black);
   height: 10%;
   width: inherit;
   display: flex;
@@ -81,7 +84,7 @@ img {
   margin-right: 0;
 }
 .body {
-  background-color: var(--base-300);
+  background-color: var(--black);
   height: 88%;
   width: inherit;
   display: flex;
@@ -92,7 +95,7 @@ img {
 
 .center {
   padding: 1rem;
-  background-color: var(--accent-300);
+  background-color: var(--base-300);
   /* height: 100%; */
   width: 80%;
   border-radius: 25px;
@@ -106,7 +109,7 @@ img {
   display: none;
 }
 .right-info {
-  background-color: var(--accent-300);
+  background-color: var(--base-300);
   height: 100%;
   width: 20%;
   border-radius: 25px;

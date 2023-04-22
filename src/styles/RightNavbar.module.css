@@ -17,6 +17,10 @@
   z-index: 99;
 }
 
+.right-pop-out-button > svg {
+  color: var(--accent-600);
+}
+
 .right-pop-out-button:hover {
   right: 0;
 }

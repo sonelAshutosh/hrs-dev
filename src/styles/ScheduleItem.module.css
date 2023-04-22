@@ -1,6 +1,7 @@
 .schedule-item {
   /* position: relative; */
-  background-color: var(--base-300);
+  background-color: var(--accent-300);
+  /* color: var(--accent-600); */
   height: 15vh;
   aspect-ratio: 8/1;
   border-radius: 25px;
