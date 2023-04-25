@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import '@/styles/globals.css'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import Image from 'next/image'
 import SearchIcon from '@/svg/SearchIcon'
 import MenuOpenIcon from '@/svg/MenuOpenIcon'
@@ -8,16 +8,33 @@ import MenuCloseIcon from '@/svg/MenuCloseIcon'
 import LeftNavbar from '@/components/LeftNavbar'
 import RightNavbar from '@/components/RightNavbar'
 import UserProfile from '@/components/UserProfile'
+import useAPIAuth from '../../api.config/useAPIAuth'
+import { useRouter } from 'next/router'
 
 export default function App({ Component, pageProps }) {
   const [leftNav, setLeftNav] = useState(false)
   const [userProfile, setUserProfile] = useState(false)
+  const { loginStatus } = useAPIAuth()
+  const router = useRouter()
+  // console.log(loginStatus)
+
   const handleNavbar = () => {
     setLeftNav(!leftNav)
   }
   const handleUserProfile = () => {
     setUserProfile(!userProfile)
   }
+
+  // This function sometimes run some times dont run
+  useEffect(() => {
+    setLeftNav(false)
+    setUserProfile(false)
+    // console.log('This this ' + loginStatus)
+    if (!loginStatus) {
+      router.push('/login')
+    }
+  }, [loginStatus])
+
   if (Component.getLayout) {
     return Component.getLayout(<Component {...pageProps} />)
   }
@@ -38,6 +55,7 @@ export default function App({ Component, pageProps }) {
                     height="50"
                     alt="logo"
                     srcSet=""
+                    priority
                   />
                 </Link>
               </div>
