@@ -96,8 +96,10 @@ export default function useAPIData() {
       ...(fieldParam !== undefined ? { fields: fieldParam } : {}),
       ...(searchParam !== undefined ? { search: searchParam } : {}),
     }
+
     const authHeader = getAuthHeader()
-    //console.log(queryObj,authHeader);
+    // console.log(queryObj, authHeader)
+    // console.log(authHeader)
     if (!!authorized && !!authHeader) {
       const directus = getDirectus(authHeader)
       const collection = directus.items(collectionName)

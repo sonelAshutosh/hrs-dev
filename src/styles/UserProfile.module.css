@@ -1,13 +1,14 @@
 .user-profile {
   position: absolute;
-  background-color: var(--base-600);
+  background-color: var(--accent-900);
+  /* color: var(--base-900); */
   width: 50vh;
   border-radius: 25px;
   aspect-ratio: 1;
   box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
-  display: flex;
+  /* display: flex;
   flex-direction: column;
-  place-content: center;
+  place-content: center; */
   padding: 0 2rem;
   right: 0.75rem;
   top: 4.25rem;
@@ -17,6 +18,27 @@
   transform-origin: top right;
 }
 
+.user-profile-container {
+  background-color: var(--accent-600);
+  padding: 2rem 10rem;
+  border-radius: 25px;
+  display: flex;
+  place-content: center;
+  place-items: center;
+  margin-inline: auto;
+  margin-top: 2rem;
+  box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
+}
+
+.user-profile-icon {
+  padding-inline: 1rem;
+}
+
+.user-profile-items > * {
+  padding: 0.5rem;
+}
+
+/* 
 .user-profile-logout {
   position: relative;
   bottom: 0;
@@ -28,16 +50,18 @@
 .user-profile-logout > * {
   margin-left: 0;
   margin-bottom: 0;
-}
+} */
 
 .user-profile-close {
   scale: 0;
 }
 
 .button {
+  background-color: var(--accent-600);
+  color: var(--base-300);
   border-radius: 15px;
-  margin-left: 1.75rem;
-  margin-bottom: 25px;
+  margin: auto;
+  margin-top: 5rem;
   height: 3.5rem;
   width: 45%;
   font-size: 1.25rem;
@@ -46,8 +70,14 @@
   place-content: center;
   box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
     rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+  font-weight: bold;
+}
+
+.button > * {
+  margin-inline: 0.25rem;
 }
 
 .button:hover {
   background-color: var(--accent-300);
+  color: var(--black);
 }

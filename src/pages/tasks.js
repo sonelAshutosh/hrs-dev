@@ -1,14 +1,37 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import styles from '../styles/Table.module.css'
 import DeleteIcon from '@/svg/DeleteIcon'
 import AddIcon from '@/svg/AddIcon'
+import useAPIData from '../../api.config/useAPIData'
 
 function Tasks() {
   // State variables for tasks, name, code, and type
+  const { getItems } = useAPIData()
   const [tasks, setTasks] = useState([])
   const [name, setName] = useState('')
   const [code, setCode] = useState('')
   const [type, setType] = useState('')
+
+  // const { getItems } = useAPIAuth()
+
+  useEffect(() => {
+    async function fetchData() {
+      const response = await getItems(
+        'HRS_Work',
+        ['name', 'shortcode', 'type'],
+        undefined,
+        undefined,
+        undefined,
+        undefined,
+        undefined,
+        true
+      )
+      const data = await response.data
+      setTasks(data)
+      // console.log(data)
+    }
+    fetchData()
+  }, [])
 
   // Function to handle adding a new task
   const handleAddButtonClick = () => {
@@ -62,7 +85,7 @@ function Tasks() {
           {tasks.map((task, index) => (
             <div key={index} className={styles['table-row']}>
               <div className={styles['table-column']}>{task.name}</div>
-              <div className={styles['table-column']}>{task.code}</div>
+              <div className={styles['table-column']}>{task.shortcode}</div>
               <div className={styles['table-column']}>{task.type}</div>
               <div className={styles['delete-button']}>
                 <div
