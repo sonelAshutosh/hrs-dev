@@ -1,18 +1,19 @@
 import React, { useState, useEffect } from 'react'
-import styles from '../styles/Table.module.css'
-import DeleteIcon from '@/svg/DeleteIcon'
-import AddIcon from '@/svg/AddIcon'
 import useAPIData from '../../api.config/useAPIData'
+
+import AddIcon from '@/svg/AddIcon'
+import DeleteIcon from '@/svg/DeleteIcon'
+import styles from '../styles/Table.module.css'
 
 function Tasks() {
   // State variables for tasks, name, code, and type
-  const { getItems } = useAPIData()
+  const { getItems, createItem, deleteItem } = useAPIData()
+
   const [tasks, setTasks] = useState([])
   const [name, setName] = useState('')
-  const [code, setCode] = useState('')
+  const [shortcode, setShortCode] = useState('')
   const [type, setType] = useState('')
-
-  // const { getItems } = useAPIAuth()
+  const [team, setTeam] = useState()
 
   useEffect(() => {
     async function fetchData() {
@@ -28,31 +29,48 @@ function Tasks() {
       )
       const data = await response.data
       setTasks(data)
-      // console.log(data)
     }
+    setTeam(localStorage.getItem('team'))
     fetchData()
   }, [])
 
   // Function to handle adding a new task
-  const handleAddButtonClick = () => {
-    if (name && code && type) {
+  const handleAddButtonClick = async () => {
+    if (name && shortcode && type) {
       // Only add the task if all three inputs are filled
       const newTask = {
         name,
-        code,
+        shortcode,
         type,
+        team,
       }
       setTasks([...tasks, newTask])
       setName('')
-      setCode('')
+      setShortCode('')
       setType('')
+
+      createItem('HRS_Work', newTask, true)
     }
   }
 
   // Function to handle deleting a task
-  const handleDeleteButtonClick = (index) => {
-    // Create a new array of tasks excluding the task to be deleted
-    const updatedTasks = tasks.filter((_, i) => i !== index)
+  const handleDeleteButtonClick = async (index) => {
+    // Get the task to be deleted
+    const taskToDelete = tasks[index]
+    const response = await getItems(
+      'HRS_Work',
+      [],
+      undefined,
+      undefined,
+      undefined,
+      undefined,
+      [taskToDelete.name, taskToDelete.shortcode],
+      true
+    )
+
+    await deleteItem('HRS_Work', response.data[0].id, undefined, true)
+    const updatedVenues = [...venues]
+    updatedTasks.splice(index, 1)
     setTasks(updatedTasks)
   }
 
@@ -110,8 +128,8 @@ function Tasks() {
           <div className={styles['table-column-input']}>
             <input
               type="text"
-              value={code}
-              onChange={(e) => setCode(e.target.value)}
+              value={shortcode}
+              onChange={(e) => setShortCode(e.target.value)}
               placeholder="Task Code"
             />
           </div>

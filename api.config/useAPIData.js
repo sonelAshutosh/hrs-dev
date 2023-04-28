@@ -136,11 +136,36 @@ export default function useAPIData() {
       } else return await collection.readOne(itemID, queryObj)
     }
   }
+  async function deleteItem(
+    collectionName,
+    itemID,
+    fieldParam,
+    authorized = false
+  ) {
+    const queryObj = {
+      ...(fieldParam !== undefined ? { fields: fieldParam } : {}),
+    }
+    const authHeader = getAuthHeader()
+    let directus
+    if (!!authorized && !!authHeader) directus = getDirectus(authHeader)
+    else directus = getDirectus()
+    if (directus) {
+      const collection = directus.items(collectionName)
+      if (Array.isArray(itemID)) {
+        let pArray = []
+        itemID.forEach((item) => {
+          pArray.push(collection.readOne(item, queryObj))
+        })
+        return await Promise.all(pArray)
+      } else return await collection.deleteOne(itemID, queryObj)
+    }
+  }
 
   return {
     createItem: createItem,
     getItems: getItems,
     getItem: getItem,
+    deleteItem: deleteItem,
     updateItem: updateItem,
     getFileUploadURL: getFileUploadURL,
     getFileUploadParams: getFileUploadParams,

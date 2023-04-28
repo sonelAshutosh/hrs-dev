@@ -2,13 +2,17 @@ import React, { useState, useEffect } from 'react'
 import styles from '../styles/Table.module.css'
 import DeleteIcon from '@/svg/DeleteIcon'
 import AddIcon from '@/svg/AddIcon'
+import useAPIAuth from '../../api.config/useAPIAuth'
 import useAPIData from '../../api.config/useAPIData'
 
 function Venues() {
-  const { getItems } = useAPIData()
+  const { getItems, createItem, deleteItem } = useAPIData()
+  const { getUserEmail } = useAPIAuth()
+
   const [venues, setVenues] = useState([])
   const [name, setName] = useState('')
-  const [code, setCode] = useState('')
+  const [shortname, setshortname] = useState('')
+  const [team, setTeam] = useState()
 
   useEffect(() => {
     async function fetchData() {
@@ -24,21 +28,42 @@ function Venues() {
       )
       const data = await response.data
       setVenues(data)
-      // console.log(data)
     }
+    setTeam(localStorage.getItem('team'))
     fetchData()
   }, [])
 
-  const handleAddButtonClick = () => {
-    if (name && code) {
-      const newVenue = { name, code }
+  const handleAddButtonClick = async () => {
+    if (name && shortname) {
+      // Only add the task if all three inputs are filled
+      const newVenue = {
+        name,
+        shortname,
+        team,
+      }
       setVenues([...venues, newVenue])
       setName('')
-      setCode('')
+      setshortname('')
+
+      createItem('HRS_Venue', newVenue, true)
     }
   }
 
-  const handleDeleteButtonClick = (index) => {
+  const handleDeleteButtonClick = async (index) => {
+    const venueToDelete = venues[index]
+    const response = await getItems(
+      'HRS_Venue',
+      [],
+      undefined,
+      undefined,
+      undefined,
+      undefined,
+      [venueToDelete.name, venueToDelete.shortname],
+      true
+    )
+    // console.log(response.data[0])
+    await deleteItem('HRS_Venue', response.data[0].id, undefined, true)
+
     const updatedVenues = [...venues]
     updatedVenues.splice(index, 1)
     setVenues(updatedVenues)
@@ -92,8 +117,8 @@ function Venues() {
           <div className={styles['table-column-input']}>
             <input
               type="text"
-              value={code}
-              onChange={(e) => setCode(e.target.value)}
+              value={shortname}
+              onChange={(e) => setshortname(e.target.value)}
               placeholder="Venue Code"
             />
           </div>

@@ -1,9 +1,13 @@
 import React, { useState } from 'react'
 import useAPIAuth from '../../api.config/useAPIAuth'
+import useAPIData from '../../api.config/useAPIData'
 import styles from '../styles/Login.module.css'
 import { useRouter } from 'next/router'
 
 const Login = () => {
+  const { getUserEmail } = useAPIAuth()
+  const { getItems } = useAPIData()
+
   const [userId, setUserId] = useState('')
   const [password, setPassword] = useState('')
   const router = useRouter()
@@ -21,8 +25,24 @@ const Login = () => {
   const handleLogin = async () => {
     const user = { email: userId, password }
     const success = await setUser(user)
+
+    const email = getUserEmail()
+
+    const userFetch = await getItems(
+      'HRS_user',
+      ['team'],
+      undefined,
+      undefined,
+      undefined,
+      undefined,
+      email.email,
+      true
+    )
+    const team = userFetch.data[0].team
+
     if (success) {
       router.push('/')
+      localStorage.setItem('team', team)
     } else {
       alert('Incorrect Email / Password')
     }

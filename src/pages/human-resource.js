@@ -2,15 +2,18 @@ import React, { useState, useEffect } from 'react'
 import styles from '../styles/Table.module.css'
 import DeleteIcon from '@/svg/DeleteIcon'
 import AddIcon from '@/svg/AddIcon'
+import useAPIAuth from '../../api.config/useAPIAuth'
 import useAPIData from '../../api.config/useAPIData'
 
 function HumanResource() {
-  const { getItems } = useAPIData()
+  const { getItems, createItem, deleteItem } = useAPIData()
+  const { getUserEmail } = useAPIAuth()
+
   // State variables for humanResource, name, code, and type
   const [humanResource, setHumanResource] = useState([])
-  const [firstName, setFirstName] = useState('')
-  // const [lastName, setLastName] = useState('')
-  const [shorthand, setShorthand] = useState('')
+  const [name, setName] = useState('')
+  const [shortname, setShortname] = useState('')
+  const [team, setTeam] = useState()
 
   useEffect(() => {
     async function fetchData() {
@@ -28,30 +31,45 @@ function HumanResource() {
       setHumanResource(data)
       // console.log(data)
     }
+    setTeam(localStorage.getItem('team'))
     fetchData()
   }, [])
 
   // Function to handle adding a new task
-  const handleAddButtonClick = () => {
-    if (firstName && shorthand) {
+  const handleAddButtonClick = async () => {
+    if (name && shortname) {
       // Only add the task if all three inputs are filled
       const newHuman = {
-        firstName,
-        // lastName,
-        shorthand,
+        name,
+        shortname,
+        team,
       }
       setHumanResource([...humanResource, newHuman])
-      setFirstName('')
-      // setLastName('')
-      setShorthand('')
+      setName('')
+      setShortname('')
+
+      createItem('HRS_HumanResource', newHuman, true)
     }
   }
 
   // Function to handle deleting a task
-  const handleDeleteButtonClick = (index) => {
+  const handleDeleteButtonClick = async (index) => {
+    const humanToDelete = humanResource[index]
+    const response = await getItems(
+      'HRS_HumanResource',
+      [],
+      undefined,
+      undefined,
+      undefined,
+      undefined,
+      [humanToDelete.name, humanToDelete.shortname],
+      true
+    )
     // Create a new array of humanResource excluding the task to be deleted
-    const updatedhumanResource = humanResource.filter((_, i) => i !== index)
-    setHumanResource(updatedhumanResource)
+    await deleteItem('HRS_HumanResource', response.data[0].id, undefined, true)
+    const updatedHumanResource = [...humanResource]
+    updatedHumanResource.splice(index, 1)
+    setHumanResource(updatedHumanResource)
   }
 
   return (
@@ -64,15 +82,10 @@ function HumanResource() {
             >
               First Name
             </div>
-            {/* <div
-              className={`${styles['table-heading']} ${styles['table-heading-2']}`}
-            >
-              Last Name
-            </div> */}
             <div
               className={`${styles['table-heading']} ${styles['table-heading-3']}`}
             >
-              Shorthand
+              Short Name
             </div>
             <div
               className={`${styles['table-heading']} ${styles['table-heading-4']}`}
@@ -100,25 +113,17 @@ function HumanResource() {
           <div className={styles['table-column-input']}>
             <input
               type="text"
-              value={firstName}
-              onChange={(e) => setFirstName(e.target.value)}
+              value={name}
+              onChange={(e) => setName(e.target.value)}
               placeholder="Name"
             />
           </div>
-          {/* <div className={styles['table-column-input']}>
-            <input
-              type="text"
-              value={lastName}
-              onChange={(e) => setLastName(e.target.value)}
-              placeholder="Last Name"
-            />
-          </div> */}
           <div className={styles['table-column-input']}>
             <input
               type="text"
-              value={shorthand}
-              onChange={(e) => setShorthand(e.target.value)}
-              placeholder="Shorthand"
+              value={shortname}
+              onChange={(e) => setShortname(e.target.value)}
+              placeholder="shortname"
             />
           </div>
           <div className={styles['add-button']}>

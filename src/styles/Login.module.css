@@ -45,6 +45,7 @@
 }
 
 .button {
+  cursor: pointer;
   background-color: var(--accent-300);
   border-radius: 15px;
   height: 3.5rem;

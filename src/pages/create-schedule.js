@@ -1,13 +1,21 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import styles from '../styles/CreateSchedule.module.css'
+import useAPIAuth from '../../api.config/useAPIAuth'
+import useAPIData from '../../api.config/useAPIData'
 
 function CreateSchedule() {
+  const [team, setTeam] = useState()
+
+  useEffect(() => {
+    setTeam(localStorage.getItem('team'))
+  }, [])
+
   return (
     <div className={styles['create-schedule-container']}>
       <h1>Create Schedule</h1>
       <div className={styles['schedule-team-name']}>
         <label htmlFor="">Enter Team Name : </label>
-        <input type="text" />
+        <input type="text" value={team} disabled />
       </div>
       <div className={styles['schedule-title']}>
         <label htmlFor="">Enter Schedule Name : </label>
