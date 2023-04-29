@@ -3,7 +3,7 @@ import styles from '../../styles/Index.module.css'
 import useAPIData from '../../../api.config/useAPIData'
 import { useEffect, useState } from 'react'
 
-function index() {
+function Index() {
   const { getItems } = useAPIData()
   const [scheduleItems, setScheduleItems] = useState([])
 
@@ -44,4 +44,4 @@ function index() {
   )
 }
 
-export default index
+export default Index
