@@ -8,13 +8,14 @@ export default function index() {
   const [scheduleItems, setScheduleItems] = useState([])
 
   useEffect(() => {
+    const team = Number(localStorage.getItem('team'))
     async function fetchData() {
       const response = await getItems(
         'HRS_Schedule_Defination',
         undefined,
         undefined,
         undefined,
-        undefined,
+        { team: team },
         undefined,
         undefined,
         true

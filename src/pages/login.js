@@ -30,7 +30,7 @@ const Login = () => {
       router.push('/')
 
       const email = sessionStorage.getItem('userEmail')
-      console.log(email)
+      // console.log(email)
       const userFetch = await getItems(
         'HRS_user',
         ['team'],
