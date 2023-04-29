@@ -1,9 +1,9 @@
 import ScheduleItem from '@/components/ScheduleItem'
 import styles from '../../styles/Index.module.css'
-import { useAPIData } from '../../../api.config/useAPIData'
+import useAPIData from '../../../api.config/useAPIData'
 import { useEffect, useState } from 'react'
 
-export default function index() {
+function index() {
   const { getItems } = useAPIData()
   const [scheduleItems, setScheduleItems] = useState([])
 
@@ -43,3 +43,5 @@ export default function index() {
     </div>
   )
 }
+
+export default index
