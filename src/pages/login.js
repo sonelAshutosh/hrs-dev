@@ -26,22 +26,22 @@ const Login = () => {
     const user = { email: userId, password }
     const success = await setUser(user)
 
-    const email = getUserEmail()
-
-    const userFetch = await getItems(
-      'HRS_user',
-      ['team'],
-      undefined,
-      undefined,
-      undefined,
-      undefined,
-      email.email,
-      true
-    )
-    const team = userFetch.data[0].team
-
     if (success) {
       router.push('/')
+
+      const email = sessionStorage.getItem('userEmail')
+      console.log(email)
+      const userFetch = await getItems(
+        'HRS_user',
+        ['team'],
+        undefined,
+        undefined,
+        undefined,
+        undefined,
+        email.email,
+        true
+      )
+      const team = userFetch.data[0].team
       localStorage.setItem('team', team)
     } else {
       alert('Incorrect Email / Password')
