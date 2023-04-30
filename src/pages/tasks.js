@@ -69,7 +69,7 @@ function Tasks() {
     )
 
     await deleteItem('HRS_Work', response.data[0].id, undefined, true)
-    const updatedVenues = [...venues]
+    const updatedTasks = [...tasks]
     updatedTasks.splice(index, 1)
     setTasks(updatedTasks)
   }

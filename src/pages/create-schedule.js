@@ -10,10 +10,19 @@ function CreateSchedule() {
   const [title, setTitle] = useState('')
   const [session, setSession] = useState(new Date().getFullYear())
   const [format, setFormat] = useState('Day')
-  const [profile, setProfile] = useState(1)
-  const [team, setTeam] = useState('')
   const [allProfiles, setAllProfiles] = useState([])
+  const [profile, setProfile] = useState({})
+  const [team, setTeam] = useState('')
   const { getItems, createItem } = useAPIData()
+
+  const weekDay = [
+    'Monday',
+    'Tuesday',
+    'Wednesday',
+    'Thrusday',
+    'Friday',
+    'Saturday',
+  ]
 
   useEffect(() => {
     setTeam(localStorage.getItem('team'))
@@ -29,16 +38,16 @@ function CreateSchedule() {
         undefined,
         true
       )
-      const data = await response.data
+      const data = response.data
       // console.log(data[0])
-      await setAllProfiles(data)
+      setAllProfiles(data)
+      setProfile(data[0])
     }
 
     fetchData()
   }, [])
 
-  // console.log(allProfiles)
-  const handleCreateSchedule = () => {
+  const handleCreateSchedule = async () => {
     const team = localStorage.getItem('team')
     const shortcode = title.toLocaleUpperCase()
 
@@ -57,9 +66,56 @@ function CreateSchedule() {
       profile,
       team,
     }
+
     createItem('HRS_Schedule_Defination', newSchedule, true)
+
+    new Promise(async (resolve) => {
+      const response = await getItems(
+        'HRS_Schedule_Defination',
+        undefined,
+        undefined,
+        undefined,
+        {
+          title: newSchedule.title,
+          shortcode: newSchedule.shortcode,
+          session: newSchedule.session,
+        },
+        undefined,
+        undefined,
+        true
+      )
+      const data = response.data
+      // console.log(data[0].id)
+      resolve(data[0])
+    }).then((data) => {
+      const newColumn = {
+        name: '',
+        start_time: 0,
+        end_time: 0,
+        profile: profile.id,
+        // schedule: data.id,
+        // add a new colum for schedule
+      }
+
+      for (var i = 0; i < profile.number_of_column; i++) {
+        createItem('HRS_Column', newColumn, true)
+      }
+
+      for (var i = 0; i < number_of_rows; i++) {
+        if (format === 'Day') {
+          var newRow = {
+            type: 'Day',
+            day: weekDay[i],
+            date: 0,
+            schedule: data.id,
+          }
+        }
+        createItem('HRS_Row', newRow, true)
+      }
+    })
+
+    // console.log(data)
     router.push('/')
-    // console.log(newSchedule)
   }
 
   return (
@@ -110,7 +166,7 @@ function CreateSchedule() {
             const selectedProfile = allProfiles.find(
               (profile) => profile.name === pfName
             )
-            setProfile(selectedProfile.id)
+            setProfile(selectedProfile) //.id
           }}
         >
           {allProfiles.map((pf) => {

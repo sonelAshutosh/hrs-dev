@@ -12,6 +12,7 @@ function UserProfile(props) {
 
   const handleLogout = () => {
     logoutUser()
+    localStorage.removeItem('team')
     router.push('/login')
   }
 

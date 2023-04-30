@@ -19,7 +19,7 @@ function ScheduleItem({ title, shortcode, session }) {
       </div>
       <div className={styles['schedule-item-code']}>
         <span> Session:</span>
-        {session}
+        {session} - {session + 1}
       </div>
     </div>
   )
