@@ -11,4 +11,23 @@
     left: 2.5rem; */
   margin: 1rem;
   cursor: pointer;
+  position: relative;
+  font-weight: bold;
+  transition: transform 0.25s ease-in-out;
+}
+
+.schedule-item:hover {
+  transform: scale(1.01);
+  color: var(--accent-900);
+}
+
+.schedule-item-title,
+.schedule-item-session {
+  padding: 0.25rem;
+}
+
+.schedule-item-code {
+  position: absolute;
+  right: 1rem;
+  bottom: 1rem;
 }

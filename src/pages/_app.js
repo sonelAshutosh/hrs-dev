@@ -10,13 +10,15 @@ import RightNavbar from '@/components/RightNavbar'
 import UserProfile from '@/components/UserProfile'
 import useAPIAuth from '../../api.config/useAPIAuth'
 import { useRouter } from 'next/router'
+import LoadingBar from 'react-top-loading-bar'
 
 export default function App({ Component, pageProps }) {
   const [leftNav, setLeftNav] = useState(false)
   const [userProfile, setUserProfile] = useState(false)
+  const [progress, setProgress] = useState(0)
+
   const { loginStatus } = useAPIAuth()
   const router = useRouter()
-  // console.log(loginStatus)
 
   const handleNavbar = () => {
     setLeftNav(!leftNav)
@@ -27,6 +29,13 @@ export default function App({ Component, pageProps }) {
 
   // This function sometimes run some times dont run
   useEffect(() => {
+    router.events.on('routeChangeStart', () => {
+      setProgress(40)
+    })
+    router.events.on('routeChangeComplete', () => {
+      setProgress(100)
+    })
+
     setLeftNav(false)
     setUserProfile(false)
     // console.log('This this ' + loginStatus)
@@ -40,6 +49,13 @@ export default function App({ Component, pageProps }) {
   }
   return (
     <>
+      <LoadingBar
+        color="#6d28d9"
+        progress={progress}
+        height={5}
+        waitingTime={400}
+        onLoaderFinished={() => setProgress(0)}
+      />
       <div className="App">
         <div className="container">
           <div className="header">

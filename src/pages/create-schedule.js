@@ -67,7 +67,7 @@ function CreateSchedule() {
       team,
     }
 
-    createItem('HRS_Schedule_Defination', newSchedule, true)
+    await createItem('HRS_Schedule_Defination', newSchedule, true)
 
     new Promise(async (resolve) => {
       const response = await getItems(

@@ -5,20 +5,20 @@ import styles from '../styles/ScheduleItem.module.css'
 function ScheduleItem({ title, shortcode, session }) {
   const router = useRouter()
   const handleSchedule = () => {
-    router.push('/my-schedules/schedule-1')
+    router.push(`/my-schedules/${title}`)
   }
   return (
     <div className={styles['schedule-item']} onClick={handleSchedule}>
       <div className={styles['schedule-item-title']}>
-        <span> Title:</span>
+        {/* <span> Title:</span> */}
         {title}
       </div>
       <div className={styles['schedule-item-code']}>
-        <span> Code:</span>
+        {/* <span> Code:</span> */}
         {shortcode}
       </div>
-      <div className={styles['schedule-item-code']}>
-        <span> Session:</span>
+      <div className={styles['schedule-item-session']}>
+        {/* <span> Session:</span> */}
         {session} - {session + 1}
       </div>
     </div>
