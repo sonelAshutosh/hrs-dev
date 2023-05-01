@@ -34,10 +34,9 @@ const Login = () => {
         ['team'],
         undefined,
         undefined,
+        { username:{"_eq": email} },
         undefined,
         undefined,
-        email,
-        // { email: email },
         true
       )
       const team = userFetch.data[0].team
