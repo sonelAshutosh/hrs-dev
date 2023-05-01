@@ -27,8 +27,6 @@ const Login = () => {
     const success = await setUser(user)
 
     if (success) {
-      router.push('/')
-
       const email = sessionStorage.getItem('userEmail')
       // console.log(email)
       const userFetch = await getItems(
@@ -38,11 +36,15 @@ const Login = () => {
         undefined,
         undefined,
         undefined,
-        email.email,
+        email,
+        // { email: email },
         true
       )
       const team = userFetch.data[0].team
+
       localStorage.setItem('team', team)
+
+      router.push('/')
     } else {
       alert('Incorrect Email / Password')
     }
