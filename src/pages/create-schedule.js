@@ -146,13 +146,16 @@ function CreateSchedule() {
       })
       .then((data) => {
         const [dataCol, dataRow] = data
+        const work = null
+        const venue = null
+        const human = null
 
         dataCol.forEach((col) => {
           dataRow.forEach((row) => {
             const newSlot = {
-              work: '',
-              venue: '',
-              human: '',
+              work,
+              venue,
+              human,
               row: row.id,
               column: col.id,
             }

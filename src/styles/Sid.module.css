@@ -1,5 +1,10 @@
 /* Set up the grid container */
 .container {
+  display: flex;
+  height: 100%;
+  width: 100%;
+}
+.slot-container {
   display: grid;
   grid-gap: 0.5rem; /* Add 10px gap between grid items */
 }
@@ -18,4 +23,42 @@
   justify-content: center; /* Center grid items horizontally */
   align-items: center; /* Center grid items vertically */
   gap: 0.25rem;
+}
+
+.container-left {
+  width: 20%;
+}
+.container-right {
+  width: 80%;
+}
+
+.schedule-heading {
+  height: 20%;
+  display: flex;
+  place-items: center;
+  place-content: center;
+  margin: auto;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.col-heading {
+  display: flex;
+  place-content: center;
+  place-items: center;
+  gap: 0.5rem;
+  height: 20%;
+}
+
+.col-heading * {
+  aspect-ratio: 1/2;
+}
+
+.row-heading {
+  display: flex;
+  flex-direction: column;
+  place-content: flex-start;
+  place-items: center;
+  gap: 0.75rem;
+  height: 80%;
 }

@@ -1,15 +1,19 @@
 import { useEffect, useState } from 'react'
 import React from 'react'
 import Slot from '../../components/Slot'
-import styles from '../../styles/ScheduleNumber.module.css'
+import styles from '../../styles/Sid.module.css'
 import { useRouter } from 'next/router'
 import useAPIData from '../../../api.config/useAPIData'
+import SlotHeading from '@/components/SlotHeading'
 
 function ScheduleItem() {
   const { getItems } = useAPIData()
 
   const [heading, setHeading] = useState()
   const [scheduleId, setScheduleId] = useState(-1)
+
+  const [row, setRow] = useState([])
+  const [col, setCol] = useState([])
 
   const [tasks, setTasks] = useState([])
   const [venues, setVenues] = useState([])
@@ -62,6 +66,8 @@ function ScheduleItem() {
       slot.push(data)
     }
     setSlots(slot)
+    setCol(colData)
+    setRow(rowData)
     // console.log(slot)
   }
 
@@ -125,25 +131,41 @@ function ScheduleItem() {
 
   return (
     <div className={styles['container']}>
-      <h3>{heading}</h3>
-      {slots.map((row, index) => (
-        <div key={index} className={styles['row']}>
-          {row.map((colItem) => (
-            <Slot
-              key={`${colItem.row}_${colItem.column}`}
-              slotId={colItem.id}
-              rowId={colItem.row}
-              columnId={colItem.column}
-              workId={colItem.work}
-              venueId={colItem.venue}
-              humanId={colItem.human}
-              tasksList={tasks}
-              venuesList={venues}
-              humansList={humans}
-            />
+      <div className={styles['container-left']}>
+        <div className={styles['schedule-heading']}>{heading}</div>
+        <div className={styles['row-heading']}>
+          {row.map((r) => {
+            return <SlotHeading type="row" key={r.id} title={r.day} />
+          })}
+        </div>
+      </div>
+      <div className={styles['container-right']}>
+        <div className={styles['col-heading']}>
+          {col.map((c) => {
+            return <SlotHeading type="col" colId={c.id} key={c.id} />
+          })}
+        </div>
+        <div className={styles['slot-container']}>
+          {slots.map((row, index) => (
+            <div key={index} className={styles['row']}>
+              {row.map((colItem) => (
+                <Slot
+                  key={`${colItem.row}_${colItem.column}`}
+                  slotId={colItem.id}
+                  rowId={colItem.row}
+                  columnId={colItem.column}
+                  workId={colItem.work}
+                  venueId={colItem.venue}
+                  humanId={colItem.human}
+                  tasksList={tasks}
+                  venuesList={venues}
+                  humansList={humans}
+                />
+              ))}
+            </div>
           ))}
         </div>
-      ))}
+      </div>
     </div>
   )
 }
