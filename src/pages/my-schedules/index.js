@@ -34,6 +34,7 @@ function Index() {
         return (
           <ScheduleItem
             key={scheduleItem.id}
+            scheduleId={scheduleItem.id}
             title={scheduleItem.title}
             shortcode={scheduleItem.shortcode}
             session={scheduleItem.session}

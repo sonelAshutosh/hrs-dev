@@ -2,13 +2,20 @@ import React from 'react'
 import { useRouter } from 'next/router'
 import styles from '../styles/ScheduleItem.module.css'
 
-function ScheduleItem({ title, shortcode, session }) {
+function ScheduleItem(props) {
+  const { scheduleId, title, shortcode, session } = props
+
   const router = useRouter()
   const handleSchedule = () => {
-    router.push(`/my-schedules/${title}`)
+    router.push(`/my-schedules/${title}_${scheduleId}`)
   }
+
   return (
-    <div className={styles['schedule-item']} onClick={handleSchedule}>
+    <div
+      key={scheduleId}
+      className={styles['schedule-item']}
+      onClick={handleSchedule}
+    >
       <div className={styles['schedule-item-title']}>
         {/* <span> Title:</span> */}
         {title}

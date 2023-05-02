@@ -3,9 +3,10 @@ import styles from '../styles/CreateSchedule.module.css'
 import useAPIAuth from '../../api.config/useAPIAuth'
 import useAPIData from '../../api.config/useAPIData'
 import { useRouter } from 'next/router'
+import { resolve } from 'styled-jsx/css'
 
 function CreateSchedule() {
-  // const [createSchedule, setCreateSchedule] = useState('')
+  var scheduleId = -1
   const router = useRouter()
   const [title, setTitle] = useState('')
   const [session, setSession] = useState(new Date().getFullYear())
@@ -87,32 +88,78 @@ function CreateSchedule() {
       const data = response.data
       // console.log(data[0].id)
       resolve(data[0])
-    }).then((data) => {
-      const newColumn = {
-        name: '',
-        start_time: 0,
-        end_time: 0,
-        profile: profile.id,
-        // schedule: data.id,
-        // add a new colum for schedule
-      }
-
-      for (var i = 0; i < profile.number_of_column; i++) {
-        createItem('HRS_Column', newColumn, true)
-      }
-
-      for (var i = 0; i < number_of_rows; i++) {
-        if (format === 'Day') {
-          var newRow = {
-            type: 'Day',
-            day: weekDay[i],
-            date: 0,
-            schedule: data.id,
-          }
-        }
-        createItem('HRS_Row', newRow, true)
-      }
     })
+      .then((data) => {
+        scheduleId = data.id
+
+        const newColumn = {
+          name: '',
+          start_time: 0,
+          end_time: 0,
+          profile: profile.id,
+          Schedule: data.id,
+        }
+
+        for (var i = 0; i < profile.number_of_column; i++) {
+          createItem('HRS_Column', newColumn, true)
+        }
+
+        for (var i = 0; i < number_of_rows; i++) {
+          if (format === 'Day') {
+            var newRow = {
+              type: 'Day',
+              day: weekDay[i],
+              date: 0,
+              schedule: data.id,
+            }
+          }
+          // if (format === 'Date')
+          // add this code here********************************************************
+          createItem('HRS_Row', newRow, true)
+        }
+      })
+      .then(async () => {
+        // console.log('Schedule ID' + scheduleId)
+        const responseCol = await getItems(
+          'HRS_Column',
+          undefined,
+          undefined,
+          undefined,
+          { Schedule: scheduleId },
+          undefined,
+          undefined,
+          true
+        )
+        const dataCol = responseCol.data
+        const responseRow = await getItems(
+          'HRS_Row',
+          undefined,
+          undefined,
+          undefined,
+          { schedule: scheduleId },
+          undefined,
+          undefined,
+          true
+        )
+        const dataRow = responseRow.data
+        return [dataCol, dataRow]
+      })
+      .then((data) => {
+        const [dataCol, dataRow] = data
+
+        dataCol.forEach((col) => {
+          dataRow.forEach((row) => {
+            const newSlot = {
+              work: '',
+              venue: '',
+              human: '',
+              row: row.id,
+              column: col.id,
+            }
+            createItem('HRS_Slot', newSlot, true)
+          })
+        })
+      })
 
     // console.log(data)
     router.push('/')
