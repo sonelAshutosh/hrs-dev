@@ -17,12 +17,13 @@ function HumanResource() {
 
   useEffect(() => {
     async function fetchData() {
+      const team = localStorage.getItem('team')
       const response = await getItems(
         'HRS_HumanResource',
         ['name', 'shortname'],
         undefined,
         undefined,
-        undefined,
+        { team: team },
         undefined,
         undefined,
         true

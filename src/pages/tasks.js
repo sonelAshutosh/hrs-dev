@@ -17,17 +17,18 @@ function Tasks() {
 
   useEffect(() => {
     async function fetchData() {
+      const team = localStorage.getItem('team')
       const response = await getItems(
         'HRS_Work',
         ['name', 'shortcode', 'type'],
         undefined,
         undefined,
-        undefined,
+        { team: team },
         undefined,
         undefined,
         true
       )
-      const data = await response.data
+      const data = response.data
       setTasks(data)
     }
     setTeam(localStorage.getItem('team'))

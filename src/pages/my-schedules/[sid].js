@@ -142,7 +142,16 @@ function ScheduleItem() {
       <div className={styles['container-right']}>
         <div className={styles['col-heading']}>
           {col.map((c) => {
-            return <SlotHeading type="col" colId={c.id} key={c.id} />
+            return (
+              <SlotHeading
+                type="col"
+                colId={c.id}
+                key={c.id}
+                title={c.name}
+                startTime={c.start_time}
+                endTime={c.end_time}
+              />
+            )
           })}
         </div>
         <div className={styles['slot-container']}>

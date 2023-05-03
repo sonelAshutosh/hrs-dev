@@ -16,12 +16,13 @@ function Venues() {
 
   useEffect(() => {
     async function fetchData() {
+      const team = localStorage.getItem('team')
       const response = await getItems(
         'HRS_Venue',
         ['name', 'shortname'],
         undefined,
         undefined,
-        undefined,
+        { team: team },
         undefined,
         undefined,
         true

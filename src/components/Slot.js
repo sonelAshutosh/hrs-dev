@@ -5,7 +5,6 @@ import useAPIData from '../../api.config/useAPIData'
 function Slot(props) {
   const { slotId, rowId, columnId, workId, venueId, humanId } = props
   const { tasksList, venuesList, humansList } = props
-
   const { updateItem } = useAPIData()
 
   // const { getItems } = useAPIData()
@@ -62,30 +61,29 @@ function Slot(props) {
 
   const handleTaskChange = (e) => {
     const temp = e.target.value
-    const selectedTask = tasksList.find((task) => task.name === temp)
-    // console.log(selectedTask.id)
-    updateItem('HRS_Slot', slotId, { work: selectedTask.id }, true)
+    updateItem('HRS_Slot', slotId, { work: temp }, true)
   }
   const handleVenueChange = (e) => {
     const temp = e.target.value
-    const selectedVenue = venuesList.find((venue) => venue.name === temp)
-    // console.log(selectedVenue.id)
-    updateItem('HRS_Slot', slotId, { venue: selectedVenue.id }, true)
+    updateItem('HRS_Slot', slotId, { venue: temp }, true)
   }
   const handleHumanChange = (e) => {
     const temp = e.target.value
-    const selectedHuman = humansList.find((human) => human.name === temp)
-    // console.log(selectedHuman.id)
-    updateItem('HRS_Slot', slotId, { human: selectedHuman.id }, true)
+    updateItem('HRS_Slot', slotId, { human: temp }, true)
   }
 
   return (
     <div id={slotId} key={slotId} className={styles['slot-container']}>
       <div className={styles['slot-task']}>
-        <select onChange={handleTaskChange}>
+        <select
+          onChange={handleTaskChange}
+          defaultValue={workId}
+          placeholder="Task"
+        >
+          <option value=""></option>
           {tasksList.map((task) => {
             return (
-              <option id={task.id} key={task.id}>
+              <option id={task.id} key={task.id} value={task.id}>
                 {task.name}
               </option>
             )
@@ -93,10 +91,15 @@ function Slot(props) {
         </select>
       </div>
       <div className={styles['slot-venue']}>
-        <select onChange={handleVenueChange}>
+        <select
+          onChange={handleVenueChange}
+          defaultValue={venueId}
+          placeholder="Venue"
+        >
+          <option value=""></option>
           {venuesList.map((venue) => {
             return (
-              <option id={venue.id} key={venue.id}>
+              <option id={venue.id} key={venue.id} value={venue.id}>
                 {venue.name}
               </option>
             )
@@ -104,10 +107,15 @@ function Slot(props) {
         </select>
       </div>
       <div className={styles['slot-human']}>
-        <select onChange={handleHumanChange}>
+        <select
+          onChange={handleHumanChange}
+          defaultValue={humanId}
+          placeholder="Human"
+        >
+          <option value=""></option>
           {humansList.map((human) => {
             return (
-              <option id={human.id} key={human.id}>
+              <option id={human.id} key={human.id} value={human.id}>
                 {human.name}
               </option>
             )
