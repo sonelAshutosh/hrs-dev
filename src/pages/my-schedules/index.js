@@ -20,7 +20,7 @@ function Index() {
         undefined,
         true
       )
-      const data = await response.data
+      const data = response.data
       setScheduleItems(data)
     }
 

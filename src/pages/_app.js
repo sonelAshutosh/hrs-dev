@@ -11,6 +11,7 @@ import UserProfile from '@/components/UserProfile'
 import useAPIAuth from '../../api.config/useAPIAuth'
 import { useRouter } from 'next/router'
 import LoadingBar from 'react-top-loading-bar'
+import CurrentScheduleAnalytics from '@/components/CurrentScheduleAnalytics'
 
 export default function App({ Component, pageProps }) {
   const [leftNav, setLeftNav] = useState(false)
@@ -99,7 +100,9 @@ export default function App({ Component, pageProps }) {
             <div className="center">
               <Component {...pageProps} />
             </div>
-            <div className="right-info"></div>
+            <div className="right-info">
+              <CurrentScheduleAnalytics />
+            </div>
           </div>
           <div className="footer"></div>
         </div>

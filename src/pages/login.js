@@ -34,7 +34,7 @@ const Login = () => {
         ['team'],
         undefined,
         undefined,
-        { username:{"_eq": email} },
+        { username: { "_eq": email } },
         undefined,
         undefined,
         true
