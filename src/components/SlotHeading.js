@@ -84,13 +84,13 @@ function SlotHeading({ type, title, colId, startTime, endTime }) {
         />
         <input
           type="time"
-          placeholder="Column Time"
+          placeholder="Column Start Time"
           onChange={handleColumnStartTime}
           value={convertToTimeString(columnStartTime)}
         />
         <input
           type="time"
-          placeholder="Column Time"
+          placeholder="Column End Time"
           onChange={handleColumnEndTime}
           value={convertToTimeString(columnEndTime)}
         />

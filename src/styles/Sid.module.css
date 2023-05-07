@@ -50,10 +50,6 @@
   height: 20%;
 }
 
-.col-heading * {
-  aspect-ratio: 1/2;
-}
-
 .row-heading {
   display: flex;
   flex-direction: column;
