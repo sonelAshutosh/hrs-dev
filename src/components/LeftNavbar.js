@@ -12,8 +12,8 @@ function LeftNavbar(props) {
     { id: 2, link: 'Tasks', path: '/tasks' },
     { id: 3, link: 'Venues', path: '/venues' },
     { id: 4, link: 'Human R.', path: '/human-resource' },
-    { id: 5, link: 'Analytics', path: '/analytics' },
-    { id: 6, link: 'Export', path: '/report' },
+    // { id: 5, link: 'Analytics', path: '/analytics' },
+    // { id: 6, link: 'Export', path: '/report' },
   ]
   const [activeIndex, setActiveIndex] = useState(null)
 
