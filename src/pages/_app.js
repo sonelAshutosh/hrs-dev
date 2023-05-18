@@ -50,6 +50,7 @@ export default function App({ Component, pageProps }) {
   }
   return (
     <>
+      Changing the UI structure of the App
       <LoadingBar
         color="#6d28d9"
         progress={progress}
