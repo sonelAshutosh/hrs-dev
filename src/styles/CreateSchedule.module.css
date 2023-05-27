@@ -4,7 +4,7 @@
   display: flex;
   flex-direction: column;
   place-content: center;
-  background-color: var(--base-300);
+  background-color: var(--secondary);
   margin: auto;
   padding: 2rem;
   border-radius: 25px;
@@ -33,8 +33,11 @@
   place-content: center;
   box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
     rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+  border: none;
+  font-weight: bold;
 }
 
 .button:hover {
-  background-color: var(--accent-600);
+  background-color: var(--primary);
+  color: var(--background);
 }

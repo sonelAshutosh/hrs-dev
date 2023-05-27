@@ -1,3 +1,8 @@
+.form {
+  position: relative;
+  margin: auto;
+  margin-bottom: 0;
+}
 .container {
   display: flex;
   flex-direction: column;
@@ -13,7 +18,7 @@
   margin: 1rem;
   border-radius: 25px;
   /* padding: 0.25rem; */
-  background-color: var(--base-300);
+  background-color: var(--secondary);
   overflow-y: auto;
 }
 .table::-webkit-scrollbar {
@@ -35,7 +40,8 @@
 .table-heading {
   /* margin-top: 0.25rem; */
   padding: 1rem 4rem;
-  background-color: var(--accent-600);
+  background-color: var(--primary);
+  color: var(--background);
 }
 
 .table-column {
@@ -67,8 +73,9 @@
 .add-button {
   position: absolute;
   width: 7.5rem;
-  right: 0;
+  right: -10rem;
   bottom: 0;
+  /* background-color: var(--secondary); */
 }
 
 .delete-button {
@@ -78,19 +85,21 @@
 }
 
 .button {
-  background-color: var(--base-300);
+  background-color: var(--background);
   border-radius: 15px;
-  height: 3.5rem;
-  width: 45%;
-  font-size: 1.25rem;
+  height: 3rem;
+  width: 40%;
+  font-size: 1rem;
   margin: 0.25rem;
   display: flex;
   place-items: center;
   place-content: center;
   box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
     rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+  border: none;
 }
 
 .button:hover {
-  background-color: var(--accent-600);
+  background-color: var(--primary);
+  color: var(--background);
 }

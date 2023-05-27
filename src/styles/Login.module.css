@@ -1,8 +1,14 @@
+.form {
+  display: flex;
+  place-content: center;
+  place-items: center;
+}
 .login-container {
   display: flex;
-  background-image: url(../../public/loginBackground.jpg);
+  background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+    url('../../public/loginBackground.jpg');
+  /* background-image: url(../../public/loginBackground.jpg); */
   background-size: cover;
-
   /* flex-direction: column; */
   /* place-items: center; */
   /* place-content: center; */
@@ -11,8 +17,8 @@
 }
 
 .login {
-  color: var(--accent-900);
-  background-color: var(--black);
+  color: var(--primary);
+  background-color: var(--secondary);
   /* opacity: 0.5; */
   display: flex;
   flex-direction: column;
@@ -24,15 +30,21 @@
 }
 
 .login > h1 {
-  margin: 1rem;
+  font-size: 3rem;
+  font-weight: bolder;
+  margin: 2rem 1rem;
+  background: -webkit-linear-gradient(var(--primary), var(--accent));
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
-.login > input {
+.login form > input {
+  display: block;
   font-weight: bolder;
-  background-color: var(--base-600);
-  color: var(--accent-900);
-  width: 50%;
-  margin: 0.5rem;
+  background-color: var(--background);
+  color: var(--primary);
+  width: 15rem;
+  margin: 1.5rem auto;
   padding: 1rem;
   border: 0;
   border-radius: 25px;
@@ -40,26 +52,30 @@
     rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
 }
 
-.login > input:focus {
+.login form > input:focus {
   outline: none;
 }
 
 .button {
   cursor: pointer;
-  background-color: var(--accent-300);
+  color: var(--background);
+  background-image: linear-gradient(45deg, var(--primary), var(--accent));
+  background-size: 200% auto;
+  transition: 0.5s;
   border-radius: 15px;
   height: 3.5rem;
   width: 45%;
   font-size: 1.25rem;
-  margin: 2rem;
+  margin: 2rem auto;
   display: flex;
   place-items: center;
   place-content: center;
   box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
     rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+  border: none;
 }
 
 .button:hover {
-  background-color: var(--accent-900);
-  color: var(--base-300);
+  background-position: right center; /* change the direction of the change here */
+  color: var(--secondary);
 }

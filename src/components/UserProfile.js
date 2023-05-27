@@ -13,7 +13,7 @@ function UserProfile(props) {
   const handleLogout = () => {
     logoutUser()
     localStorage.removeItem('team')
-    router.push('/login')
+    router.push('/admin')
   }
 
   useEffect(() => {

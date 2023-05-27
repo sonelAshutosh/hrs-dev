@@ -5,7 +5,7 @@ export default function RedirectHome() {
   const router = useRouter()
 
   useEffect(() => {
-    router.replace('/client')
+    router.replace('/my-schedules')
   }, [])
 
   return null
